@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorte ou Azar</title>
+    <title>Perguntas e Respostas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -358,12 +358,12 @@
             const generateBtn = document.getElementById("generateBtn");
             const resetBtn = document.getElementById("resetBtn");
 
-            if (perguntasExibidas.length === perguntasERespostas.length) {
-                qaDiv.textContent = "Você já viu todas as perguntas e respostas.";
-                generateBtn.style.display = "none";
-                resetBtn.style.display = "block";
-                return;
-            }
+            // if (perguntasExibidas.length === perguntasERespostas.length) {
+            //     qaDiv.textContent = "Você já viu todas as perguntas e respostas.";
+            //     generateBtn.style.display = "none";
+            //     resetBtn.style.display = "block";
+            //     return;
+            // }
 
             // Embaralha as perguntas antes de escolher a próxima
             const perguntasNaoExibidas = perguntasERespostas.filter(pergunta => !perguntasExibidas.includes(pergunta));
