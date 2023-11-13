@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perguntas e Respostas</title>
+    <title>Sorte ou Azar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,262 +39,315 @@
 <body>
     <div id="content">
         <div class="qa-container">
-
             <h2>Perguntas e Respostas:</h2>
             <div id="qa"></div>
-            <br>
-            <button id="generateBtn" onclick="gerarPergunta()">Gerar Pergunta </button> 
-            <br>
+            <button id="generateBtn" onclick="gerarPergunta()">Gerar Pergunta</button>
             <button id="resetBtn" style="display:none;" onclick="resetarPerguntas()">Gerar Perguntas Novamente</button>
-
         </div>
     </div>
 
     <script>
         const perguntasERespostas = [
-            { pergunta: "Uma fonte de energia renovável é aquela que gera uma quantidade fixa de energia que nunca se esgota, independentemente do seu uso, como, por exemplo, a energia nuclear.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "As consequências do efeito estufa incluem o aumento da temperatura global, mudanças climáticas, derretimento de geleiras e aumento do nível do mar devido ao aquecimento da Terra.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Ecossistemas são sistemas naturais compostos por organismos vivos e seu ambiente físico, nos quais os seres vivos interagem entre si e com os fatores abióticos para sustentar a vida.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Uma das principais causas da extinção de espécies são as mudanças climáticas causada pela atividade humana.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Biodiversidade é a capacidade de um ecossistema de sustentar a vida humana com base em recursos naturais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Compostagem é um processo de decomposição natural de matéria orgânica, como restos de alimentos e resíduos de jardim, para criar composto orgânico rico em nutrientes usado como fertilizante.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A agricultura sustentável tem como impacto a redução na produção de alimentos, resultando em escassez alimentar e insegurança alimentar.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "As zonas de conservação desempenham um papel crucial na proteção da biodiversidade, na preservação de ecossistemas naturais e na manutenção do equilíbrio ecológico.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A agenda 2030 da ONU é um plano de ação global que visa abordar desafios globais, como a pobreza, a desigualdade, as mudanças climáticas e a preservação do meio ambiente, com o objetivo de alcançar o desenvolvimento sustentável até o ano de 2030.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Camada de ozônio é uma região da atmosfera que contém uma concentração elevada de moléculas de ozônio (O3) e que desempenha um papel vital na proteção da Terra contra a radiação ultravioleta (UV) do sol.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Consumo consciente é um comportamento em que os consumidores fazem escolhas informadas e responsáveis ao adquirir produtos e serviços, levando em consideração os impactos sociais e ambientais, bem como as necessidades pessoais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Quais são os 3Rs da sustentabilidade?", alternativas: ["A) Reduzir, Reutilizar e Reciclar.", "B) Reduzir, Restaurar e Replantar.", "C)	Resgatar, Realocar e Regenerar.", "D) Replicar, Reconstruir e Repovoar."], resposta: 2 },
-            { pergunta: "Poluição luminosa é a contaminação do ar por partículas tóxicas provenientes de indústrias.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Os Objetivos de Desenvolvimento Sustentável (ODS) da ONU são uma série de 17 metas globais que visam abordar questões como pobreza, fome, igualdade de gênero, educação, água limpa, saneamento, energia acessível, ação climática e paz, até 2030.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A agricultura convencional utilizada no mundo é benéfica para o meio ambiente, pois promove a redução do uso de água e a conservação dos recursos naturais", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Energias renováveis, como a solar e a eólica são importantes porque são fontes de energia limpa e sustentável, que ajudam a reduzir as emissões de gases de efeito estufa e a combater as mudanças climáticas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O desmatamento com relação a sustentabilidade é benéfico, pois proporciona espaço para o crescimento de cultivos e o desenvolvimento econômico.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Sobrepesca é quando uma espécie é pescada além da sua capacidade natural de reprodução, ou seja, tiramos mais ela do ambiente do que ela consegue se reproduzir. As consequências disso são sérias e podem fazer com que uma espécie entre em extinção.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A preservação de áreas de floresta tropical é prejudicial, uma vez que impede o uso dessas terras para a agricultura e a exploração de recursos naturais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Poluição sonora é a presença excessiva de ruído no ambiente, proveniente de fontes como tráfego rodoviário, ferroviário, aéreo, industrial, e outros, que pode afetar a saúde e o bem-estar das pessoas", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Práticas agrícolas sustentáveis envolvem a utilização intensiva de produtos químicos e fertilizantes para aumentar a produção de alimentos", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Acidificação dos oceanos é um processo em que os oceanos se tornam alcalinos, com um pH muito alto, tornando a vida marinha mais saudável.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A sustentabilidade se relaciona com a justiça social de forma que a sustentabilidade está em conflito com a justiça social, uma vez que ela promove restrições ao desenvolvimento econômico em detrimento das pessoas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Pegada hídrica é uma medida do uso de água associado à produção de bens e serviços, incluindo o consumo direto e indireto de água, levando em consideração a quantidade de água necessária para produzir um determinado produto ou serviço.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "- Gestão de resíduos é o processo de coleta, transporte, tratamento, reciclagem e disposição final de resíduos sólidos e líquidos, com o objetivo de minimizar impactos ambientais e proteger a saúde pública.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Desenvolvimento sustentável é um modelo de desenvolvimento que visa atender às necessidades presentes sem comprometer a capacidade das gerações futuras de atender às suas próprias necessidades, equilibrando aspectos econômicos, sociais e ambientais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O que é a energia geotérmica?", alternativas: ["A) É a energia obtida a partir da queima de carvão mineral.", "B) É a energia térmica armazenada no interior da Terra, que pode ser aproveitada para geração de eletricidade e aquecimento.", "C) É a energia proveniente da luz solar capturada por painéis solares.", "D) É a energia gerada a partir do calor emitido pelo sol na Terra."], resposta: 2 },
-            { pergunta: "A poluição do solo em certa medida é benéfica para os seres humanos, uma vez que promove o crescimento de plantas resistentes.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Qual é o papel das abelhas na sustentabilidade?", alternativas: ["A) Produção de mel, diminuindo assim, a fome no mundo.", "B) Desempenham um papel fundamental na polinização de plantas, incluindo culturas agrícolas, o que ajuda a garantir a produção de alimentos e a biodiversidade.", "C)	Prejudicam a sustentabilidade, pois podem transmitir doenças às plantas e prejudicar a agricultura.", "D) Está relacionado apenas à produção de cera de abelha para velas e produtos de beleza."], resposta: 2 },
-            { pergunta: "Desertificação é a construção de cidades e zonas urbanas em áreas anteriormente verdes, com grande presença de vegetação.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Áreas de conservação marinha contribuem para a mitigação das mudanças climáticas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Alimentos orgânicos são produtos agrícolas cultivados sem o uso de pesticidas sintéticos, fertilizantes químicos ou organismos geneticamente modificados (OGMs), seguindo práticas agrícolas sustentáveis e respeitando os padrões orgânicos estabelecidos.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Biomassa é a matéria orgânica, como resíduos de plantas e animais, que pode ser convertida em energia, como biocombustíveis, para uso na produção de eletricidade e calor.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O que é a responsabilidade compartilhada na gestão de resíduos?", alternativas: ["A) Cada pessoa é responsável por seus próprios resíduos", "B) O governo é o único responsável pela gestão de resíduos.", "C) Empresas não têm responsabilidade na gestão de resíduos", "D) Todos, incluindo empresas e indivíduos, têm responsabilidades na gestão de resíduos"], resposta: 2 },
-            { pergunta: "As mudanças climáticas tem pouco impacto na biodiversidade, uma vez que os organismos podem se adaptar rapidamente a novas condições climáticas, conforme a teoria da evolução de Darwin.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A poluição térmica é o aumento da temperatura da água em corpos d'água, como rios, lagos e oceanos, devido à descarga de água aquecida por atividades humanas, o que pode prejudicar a vida aquática e os ecossistemas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Uma fonte de energia não renovável é aquela que se baseia em recursos finitos, como combustíveis fósseis, que não podem ser reabastecidos a uma taxa igual à sua exploração.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O efeito cascata na cadeia alimentar ocorre quando uma mudança no tamanho de uma população de uma espécie afeta diretamente outras espécies na cadeia alimentar, levando a uma série de impactos e desequilíbrios na comunidade.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A poluição por metais pesados refere-se à liberação de dióxido de carbono na atmosfera.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O deslocamento forçado de populações devido a mudanças climáticas ocorre quando pessoas são obrigadas a abandonar suas casas devido a eventos climáticos extremos, aumento do nível do mar, secas prolongadas ou outros impactos das mudanças climáticas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Recuperar terras degradadas consiste em implementar práticas e técnicas que visam restaurar a fertilidade do solo, aumentar a cobertura vegetal, combater a erosão e promover a recuperação de ecossistemas degradados.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "As áreas verdes urbanas são responsáveis pela poluição do ar nas cidades, devido à emissão de substâncias orgânicas voláteis pelas plantas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A agricultura de subsistência é uma forma de agricultura que utiliza técnicas de produção de alta tecnologia e depende da agricultura mecanizada.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O ciclo da água é o processo contínuo de evaporação da água da superfície da Terra, formação de nuvens, precipitação de chuva ou neve, escoamento para rios e oceanos, e infiltração no solo, completando o ciclo.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A reciclagem de eletrônicos é um processo que não tem como objetivo recuperar materiais valiosos, apenas a eliminação ambientalmente correta de dispositivos eletrônicos.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A pegada de carbono de uma empresa é a medida das emissões de gases de efeito estufa associadas às operações e atividades da empresa, incluindo a produção, transporte e consumo de energia.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Produtos biodegradáveis são materiais que podem ser decompostos por organismos naturais no ambiente em elementos químicos simples e não causam poluição duradoura.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O aquecimento global é um fenômeno natural e não tem relação com as atividades humanas. Tendo como comprovação disso o derretimento da era do gelo há milhões da anos atrás, quando ainda nem existia a espécie humana.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A poluição do solo não tem impacto na saúde humana, uma vez que os seres humanos têm contato na maior parte do tempo com áreas concretadas e pouco contato com o solo.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A captação de água da chuva é um processo de coleta e armazenamento da água que cai das chuvas para uso futuro, incluindo irrigação, abastecimento de água doméstica e redução do escoamento de águas pluviais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O que é a agricultura vertical?", alternativas: ["A) É um termo que descreve a prática de cultivar plantas em solos empobrecidos..", "B) Refere-se a plantar culturas em grandes extensões de terreno, como campos e fazendas tradicionais.", "C) É o cultivo de alimentos em múltiplos níveis, em estruturas verticais.", "D) É um método que se baseia na rotação de culturas para melhorar a qualidade do solo."], resposta: 2 },
-            { pergunta: "Produtos de comércio justo são produtos que são adquiridos de produtores em países em desenvolvimento a preços justos, garantindo condições de trabalho dignas e promovendo a sustentabilidade social e ambiental.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A gestão de resíduos perigosos se concentra apenas na coleta e não aborda o tratamento e a eliminação segura desses resíduos.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O consumo sustentável refere-se apenas ao consumo excessivo de recursos naturais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "A degradação do solo refere-se à deterioração da qualidade do solo devido a práticas inadequadas de manejo, como erosão, esgotamento de nutrientes, contaminação e compactação, resultando na diminuição da capacidade do solo de sustentar a vegetação e a produção agrícola.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "O que é a agricultura vertical?", alternativas: ["A) Consumo e produção responsáveis, ação contra a mudança global do clima e transportes públicos eficientes.", "B) Energia limpa e acessível, ação contra a mudança global do clima e avanço tecnológico.", "C) Educação de qualidade, trabalho decente junto do crescimento econômico e redução das desigualdades.", "D) Proteção dos oceanos, incentivo à cultura e arte e exploração espacial."], resposta: 2 },
-            { pergunta: "Quais fontes de energia a seguir são consideradas renováveis?", alternativas: ["A) Hidrelétrica, Biomassa, Nuclear.", "B) Eólica, Solar e Nuclear.", "C) Solar, Carvão vegetal e gás natural .", "D) Geotérmica, Eólica e maremotriz."], resposta: 2 },
-            { pergunta: "Hidrogênio verde é uma forma de hidrogênio produzida a partir da extração de gás natural, tornando-o mais acessível que outras formas de hidrogênio.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
-            { pergunta: "Quais gases a seguir contribuem para o efeito estufa?", alternativas: ["A) Dióxido de carbono, Metano e Monóxido de carbono.", "B) Óxido Nitroso, Hidrofluorcarbono e Ozônio.", "C) Vapor d’água, Clorofluorcarbonos e Metano.", "D) Todas as alternativas estão corretas"], resposta: 2 },
-            { pergunta: "Qual das alternativas a seguir não corresponde a uma medida em prol da sustentabilidade?",
+        { pergunta: "1 - Uma fonte de energia renovável é aquela que gera uma quantidade fixa de energia que nunca se esgota, independentemente do seu uso, como, por exemplo, a energia nuclear.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "2 - As consequências do efeito estufa incluem o aumento da temperatura global, mudanças climáticas, derretimento de geleiras e aumento do nível do mar devido ao aquecimento da Terra.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "3 - Ecossistemas são sistemas naturais compostos por organismos vivos e seu ambiente físico, nos quais os seres vivos interagem entre si e com os fatores abióticos para sustentar a vida.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "4 - Uma das principais causas da extinção de espécies são as mudanças climáticas causada pela atividade humana.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "5 - Biodiversidade é a capacidade de um ecossistema de sustentar a vida humana com base em recursos naturais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "6 - Compostagem é um processo de decomposição natural de matéria orgânica, como restos de alimentos e resíduos de jardim, para criar composto orgânico rico em nutrientes usado como fertilizante.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "7 - A agricultura sustentável tem como impacto a redução na produção de alimentos, resultando em escassez alimentar e insegurança alimentar.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "8 - As zonas de conservação desempenham um papel crucial na proteção da biodiversidade, na preservação de ecossistemas naturais e na manutenção do equilíbrio ecológico.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "9 - A agenda 2030 da ONU é um plano de ação global que visa abordar desafios globais, como a pobreza, a desigualdade, as mudanças climáticas e a preservação do meio ambiente, com o objetivo de alcançar o desenvolvimento sustentável até o ano de 2030.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "10 - Camada de ozônio é uma região da atmosfera que contém uma concentração elevada de moléculas de ozônio (O3) e que desempenha um papel vital na proteção da Terra contra a radiação ultravioleta (UV) do sol.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "11 - Consumo consciente é um comportamento em que os consumidores fazem escolhas informadas e responsáveis ao adquirir produtos e serviços, levando em consideração os impactos sociais e ambientais, bem como as necessidades pessoais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "12 - Quais são os 3Rs da sustentabilidade?", alternativas: ["A) Reduzir, Reutilizar e Reciclar.", "B) Reduzir, Restaurar e Replantar.", "C)	Resgatar, Realocar e Regenerar.", "D) Replicar, Reconstruir e Repovoar."], resposta: 2 },
+
+            { pergunta: "13 - Poluição luminosa é a contaminação do ar por partículas tóxicas provenientes de indústrias.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "14 - Os Objetivos de Desenvolvimento Sustentável (ODS) da ONU são uma série de 17 metas globais que visam abordar questões como pobreza, fome, igualdade de gênero, educação, água limpa, saneamento, energia acessível, ação climática e paz, até 2030.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "15 - A agricultura convencional utilizada no mundo é benéfica para o meio ambiente, pois promove a redução do uso de água e a conservação dos recursos naturais", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "16 - Energias renováveis, como a solar e a eólica são importantes porque são fontes de energia limpa e sustentável, que ajudam a reduzir as emissões de gases de efeito estufa e a combater as mudanças climáticas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "17 - O desmatamento com relação a sustentabilidade é benéfico, pois proporciona espaço para o crescimento de cultivos e o desenvolvimento econômico.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+            { pergunta: "18 - Sobrepesca é quando uma espécie é pescada além da sua capacidade natural de reprodução, ou seja, tiramos mais ela do ambiente do que ela consegue se reproduzir. As consequências disso são sérias e podem fazer com que uma espécie entre em extinção.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "19 - A preservação de áreas de floresta tropical é prejudicial, uma vez que impede o uso dessas terras para a agricultura e a exploração de recursos naturais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "20 - Poluição sonora é a presença excessiva de ruído no ambiente, proveniente de fontes como tráfego rodoviário, ferroviário, aéreo, industrial, e outros, que pode afetar a saúde e o bem-estar das pessoas", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "21 - Práticas agrícolas sustentáveis envolvem a utilização intensiva de produtos químicos e fertilizantes para aumentar a produção de alimentos", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "22 - Acidificação dos oceanos é um processo em que os oceanos se tornam alcalinos, com um pH muito alto, tornando a vida marinha mais saudável.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "23 - A sustentabilidade se relaciona com a justiça social de forma que a sustentabilidade está em conflito com a justiça social, uma vez que ela promove restrições ao desenvolvimento econômico em detrimento das pessoas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "24 - Pegada hídrica é uma medida do uso de água associado à produção de bens e serviços, incluindo o consumo direto e indireto de água, levando em consideração a quantidade de água necessária para produzir um determinado produto ou serviço.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "25 - Gestão de resíduos é o processo de coleta, transporte, tratamento, reciclagem e disposição final de resíduos sólidos e líquidos, com o objetivo de minimizar impactos ambientais e proteger a saúde pública.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "26 - Desenvolvimento sustentável é um modelo de desenvolvimento que visa atender às necessidades presentes sem comprometer a capacidade das gerações futuras de atender às suas próprias necessidades, equilibrando aspectos econômicos, sociais e ambientais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "27  - O que é a energia geotérmica?", alternativas: ["A) É a energia obtida a partir da queima de carvão mineral.", "B) É a energia térmica armazenada no interior da Terra, que pode ser aproveitada para geração de eletricidade e aquecimento.", "C) É a energia proveniente da luz solar capturada por painéis solares.", "D) É a energia gerada a partir do calor emitido pelo sol na Terra."], resposta: 2 },
+
+            { pergunta: "28 - A poluição do solo em certa medida é benéfica para os seres humanos, uma vez que promove o crescimento de plantas resistentes.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "29 - Qual é o papel das abelhas na sustentabilidade?", alternativas: ["A) Produção de mel, diminuindo assim, a fome no mundo.", "B) Desempenham um papel fundamental na polinização de plantas, incluindo culturas agrícolas, o que ajuda a garantir a produção de alimentos e a biodiversidade.", "C)	Prejudicam a sustentabilidade, pois podem transmitir doenças às plantas e prejudicar a agricultura.", "D) Está relacionado apenas à produção de cera de abelha para velas e produtos de beleza."], resposta: 2 },
+
+            { pergunta: "30 - Desertificação é a construção de cidades e zonas urbanas em áreas anteriormente verdes, com grande presença de vegetação.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "31 - Áreas de conservação marinha contribuem para a mitigação das mudanças climáticas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "32 - Alimentos orgânicos são produtos agrícolas cultivados sem o uso de pesticidas sintéticos, fertilizantes químicos ou organismos geneticamente modificados (OGMs), seguindo práticas agrícolas sustentáveis e respeitando os padrões orgânicos estabelecidos.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "33 - Biomassa é a matéria orgânica, como resíduos de plantas e animais, que pode ser convertida em energia, como biocombustíveis, para uso na produção de eletricidade e calor.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "34 - O que é a responsabilidade compartilhada na gestão de resíduos?", alternativas: ["A) Cada pessoa é responsável por seus próprios resíduos", "B) O governo é o único responsável pela gestão de resíduos.", "C) Empresas não têm responsabilidade na gestão de resíduos", "D) Todos, incluindo empresas e indivíduos, têm responsabilidades na gestão de resíduos"], resposta: 2 },
+
+            { pergunta: "35 - As mudanças climáticas tem pouco impacto na biodiversidade, uma vez que os organismos podem se adaptar rapidamente a novas condições climáticas, conforme a teoria da evolução de Darwin.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "36 - A poluição térmica é o aumento da temperatura da água em corpos d'água, como rios, lagos e oceanos, devido à descarga de água aquecida por atividades humanas, o que pode prejudicar a vida aquática e os ecossistemas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "37 - Uma fonte de energia não renovável é aquela que se baseia em recursos finitos, como combustíveis fósseis, que não podem ser reabastecidos a uma taxa igual à sua exploração.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "38 - O efeito cascata na cadeia alimentar ocorre quando uma mudança no tamanho de uma população de uma espécie afeta diretamente outras espécies na cadeia alimentar, levando a uma série de impactos e desequilíbrios na comunidade.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "39 - A poluição por metais pesados refere-se à liberação de dióxido de carbono na atmosfera.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "40 - O deslocamento forçado de populações devido a mudanças climáticas ocorre quando pessoas são obrigadas a abandonar suas casas devido a eventos climáticos extremos, aumento do nível do mar, secas prolongadas ou outros impactos das mudanças climáticas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "41 - Recuperar terras degradadas consiste em implementar práticas e técnicas que visam restaurar a fertilidade do solo, aumentar a cobertura vegetal, combater a erosão e promover a recuperação de ecossistemas degradados.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "42 - As áreas verdes urbanas são responsáveis pela poluição do ar nas cidades, devido à emissão de substâncias orgânicas voláteis pelas plantas.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "43 - A agricultura de subsistência é uma forma de agricultura que utiliza técnicas de produção de alta tecnologia e depende da agricultura mecanizada.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "44 - O ciclo da água é o processo contínuo de evaporação da água da superfície da Terra, formação de nuvens, precipitação de chuva ou neve, escoamento para rios e oceanos, e infiltração no solo, completando o ciclo.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "45 - A reciclagem de eletrônicos é um processo que não tem como objetivo recuperar materiais valiosos, apenas a eliminação ambientalmente correta de dispositivos eletrônicos.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "46 - A pegada de carbono de uma empresa é a medida das emissões de gases de efeito estufa associadas às operações e atividades da empresa, incluindo a produção, transporte e consumo de energia.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "47 - Produtos biodegradáveis são materiais que podem ser decompostos por organismos naturais no ambiente em elementos químicos simples e não causam poluição duradoura.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "48 - O aquecimento global é um fenômeno natural e não tem relação com as atividades humanas. Tendo como comprovação disso o derretimento da era do gelo há milhões da anos atrás, quando ainda nem existia a espécie humana.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "49 - A poluição do solo não tem impacto na saúde humana, uma vez que os seres humanos têm contato na maior parte do tempo com áreas concretadas e pouco contato com o solo.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "50 - A captação de água da chuva é um processo de coleta e armazenamento da água que cai das chuvas para uso futuro, incluindo irrigação, abastecimento de água doméstica e redução do escoamento de águas pluviais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "51 - O que é a agricultura vertical?", alternativas: ["A) É um termo que descreve a prática de cultivar plantas em solos empobrecidos..", "B) Refere-se a plantar culturas em grandes extensões de terreno, como campos e fazendas tradicionais.", "C) É o cultivo de alimentos em múltiplos níveis, em estruturas verticais.", "D) É um método que se baseia na rotação de culturas para melhorar a qualidade do solo."], resposta: 2 },
+
+            { pergunta: "52 - Produtos de comércio justo são produtos que são adquiridos de produtores em países em desenvolvimento a preços justos, garantindo condições de trabalho dignas e promovendo a sustentabilidade social e ambiental.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "53 - A gestão de resíduos perigosos se concentra apenas na coleta e não aborda o tratamento e a eliminação segura desses resíduos.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "54 - O consumo sustentável refere-se apenas ao consumo excessivo de recursos naturais.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "55 - A degradação do solo refere-se à deterioração da qualidade do solo devido a práticas inadequadas de manejo, como erosão, esgotamento de nutrientes, contaminação e compactação, resultando na diminuição da capacidade do solo de sustentar a vegetação e a produção agrícola.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "56 - O que é a agricultura vertical?", alternativas: ["A) Consumo e produção responsáveis, ação contra a mudança global do clima e transportes públicos eficientes.", "B) Energia limpa e acessível, ação contra a mudança global do clima e avanço tecnológico.", "C) Educação de qualidade, trabalho decente junto do crescimento econômico e redução das desigualdades.", "D) Proteção dos oceanos, incentivo à cultura e arte e exploração espacial."], resposta: 2 },
+
+            { pergunta: "57 - Quais fontes de energia a seguir são consideradas renováveis?", alternativas: ["A) Hidrelétrica, Biomassa, Nuclear.", "B) Eólica, Solar e Nuclear.", "C) Solar, Carvão vegetal e gás natural .", "D) Geotérmica, Eólica e maremotriz."], resposta: 2 },
+
+            { pergunta: "58 - Hidrogênio verde é uma forma de hidrogênio produzida a partir da extração de gás natural, tornando-o mais acessível que outras formas de hidrogênio.", alternativas: ["A) Verdadeiro", "B) Falso"], resposta: 2 },
+
+            { pergunta: "59 - Quais gases a seguir contribuem para o efeito estufa?", alternativas: ["A) Dióxido de carbono, Metano e Monóxido de carbono.", "B) Óxido Nitroso, Hidrofluorcarbono e Ozônio.", "C) Vapor d’água, Clorofluorcarbonos e Metano.", "D) Todas as alternativas estão corretas"], resposta: 2 },
+
+            { pergunta: "60 – Qual das alternativas a seguir não corresponde a uma medida em prol da sustentabilidade?",
     alternativas: [
-      "Promover o reflorestamento e a conservação da biodiversidade",
-      "Utilizar energia renovável em vez de combustíveis fósseis",
-      "Reciclar materiais e reduzir o desperdício",
-      "Realizar o descarte do lixo em lixões a céu aberto"
+      "a) Promover o reflorestamento e a conservação da biodiversidade",
+      "b) Utilizar energia renovável em vez de combustíveis fósseis",
+      "c) Reciclar materiais e reduzir o desperdício",
+      "d) Realizar o descarte do lixo em lixões a céu aberto"
     ],
     resposta: 3
   },
-  { pergunta: "Qual dos seguintes não é um dos pilares da sustentabilidade?",
+  { pergunta: "61 - Qual dos seguintes não é um dos pilares da sustentabilidade?",
     alternativas: [
-      "Meio ambiente",
-      "Economia",
-      "Saúde",
-      "Cultura"
+      "a) Meio ambiente",
+      "b) Economia",
+      "c) Saúde",
+      "d) Cultura"
     ],
     resposta: 4
   },
-  { pergunta: "Qual é uma prática sustentável para economizar energia em casa?",
+  { pergunta: "62 - Qual é uma prática sustentável para economizar energia em casa?",
     alternativas: [
-      "Deixar todas as luzes acesas o tempo todo",
-      "Usar ar-condicionado em todas as estações do ano",
-      "Deixar a torneira aberta enquanto escova os dentes",
-      "Desligar os aparelhos eletrônicos quando não estão em uso"
+      "a) Deixar todas as luzes acesas o tempo todo",
+      "b) Usar ar-condicionado em todas as estações do ano",
+      "c) Deixar a torneira aberta enquanto escova os dentes",
+      "d) Desligar os aparelhos eletrônicos quando não estão em uso"
     ],
     resposta: 4
   },
-  { pergunta: "Qual é a importância da preservação das florestas?",
+  { pergunta: "63 - Qual é a importância da preservação das florestas?",
     alternativas: [
-      "Manter os animais de estimação",
-      "Produzir mais papel",
-      "Diminuir a quantidade de oxigênio na atmosfera",
-      "Regular o clima e abrigar biodiversidade"
+      "a) Manter os animais de estimação",
+      "b) Produzir mais papel",
+      "c) Diminuir a quantidade de oxigênio na atmosfera",
+      "d) Regular o clima e abrigar biodiversidade"
     ],
     resposta: 4
   },
-  { pergunta: "Qual é a importância da redução do desperdício de alimentos?",
+  { pergunta: "64 - Qual é a importância da redução do desperdício de alimentos?",
     alternativas: [
-      "Aumentar os preços dos alimentos",
-      "Economizar dinheiro",
-      "Aumentar a produção de lixo",
-      "Evitar a fome e reduzir a pressão sobre os recursos naturais"
+      "a) Aumentar os preços dos alimentos",
+      "b) Economizar dinheiro",
+      "c) Aumentar a produção de lixo",
+      "d) Evitar a fome e reduzir a pressão sobre os recursos naturais"
     ],
     resposta: 4
   },
-  { pergunta: "O que é um 'produto reciclável'?",
+  { pergunta: "65 - O que é um 'produto reciclável'?",
     alternativas: [
-      "Um produto que não pode ser transformado em algo novo",
-      "Um produto que não pode ser reutilizado",
-      "Um produto que não se degrada na natureza",
-      "Um produto que pode ser transformado em algo novo após o uso"
+      "a) Um produto que não pode ser transformado em algo novo",
+      "b) Um produto que não pode ser reutilizado",
+      "c) Um produto que não se degrada na natureza",
+      "d) Um produto que pode ser transformado em algo novo após o uso"
     ],
     resposta: 4
   },
-  { pergunta: "Qual é a importância da conservação da camada de ozônio?",
+  { pergunta: "66 - Qual é a importância da conservação da camada de ozônio?",
     alternativas: [
-      "Reduzir a exposição ao sol",
-      "Evaporação dos oceanos, permitindo que o nível de umidade do mundo fique estável",
-      "Aumentar a quantidade de oxigênio no planeta",
-      "Proteger a Terra dos raios ultravioletas prejudiciais"
+      "a) Reduzir a exposição ao sol",
+      "b) Evaporação dos oceanos, permitindo que o nível de umidade do mundo fique estável",
+      "c) Aumentar a quantidade de oxigênio no planeta",
+      "d) Proteger a Terra dos raios ultravioletas prejudiciais"
     ],
     resposta: 4
   },
-  { pergunta: "Um alimento transgênico é um alimento que foi geneticamente modificado para incluir material genético de outra espécie, geralmente para melhorar suas características, como resistência a pragas ou maior valor nutricional. Verdadeiro ou Falso?",
+  { pergunta: "67 - Um alimento transgênico é um alimento que foi geneticamente modificado para incluir material genético de outra espécie, geralmente para melhorar suas características, como resistência a pragas ou maior valor nutricional. a) Verdadeiro b) Falso",
     alternativas: [
-      "Verdadeiro",
-      "Falso"
+      "a) Verdadeiro",
+      "b) Falso"
     ],
     resposta: 1
   },
-  { pergunta: "As lixeiras de coleta seletiva são divididas em categorias de tamanho, com diferentes tamanhos de lixeiras para resíduos diferentes. Verdadeiro ou Falso?",
+  { pergunta: "68 - As lixeiras de coleta seletiva são divididas em categorias de tamanho, com diferentes tamanhos de lixeiras para resíduos diferentes. a) Verdadeiro b) Falso",
     alternativas: [
-      "Verdadeiro",
-      "Falso"
+      "a) Verdadeiro",
+      "b) Falso"
     ],
     resposta: 1
   },
-  { pergunta: "Reciclar objetos é importante porque tem impacto significativo no fomento da economia. Verdadeiro ou Falso?",
+  { pergunta: "69 - Reciclar objetos é importante porque tem impacto significativo no fomento da economia a) Verdadeiro b) Falso",
     alternativas: [
-      "Verdadeiro",
-      "Falso"
+      "a) Verdadeiro",
+      "b) Falso"
     ],
     resposta: 1
   },
-  { pergunta: "O que é o aterro sanitário?",
+  { pergunta: "70 - O que é o aterro sanitário?",
     alternativas: [
-      "Um local de descarte no qual o lixo é acumulado ao ar livre",
-      "Um espaço para o plantio regularizado de alimentos",
-      "Uma área aterrada para construções",
-      "Um local para acomodar resíduos de forma controlada e segura"
+      "a) Um local de descarte no qual o lixo é acumulado ao ar livre",
+      "b) Um espaço para o plantio regularizado de alimentos",
+      "c) Uma área aterrada para construções",
+      "d) Um local para acomodar resíduos de forma controlada e segura"
     ],
     resposta: 4
   },
-  { pergunta: "O que é a reciclagem?",
+  { pergunta: "71 - O que é a reciclagem?",
     alternativas: [
-      "Transformar resíduos em lixo",
-      "Reutilizar produtos sem processamento",
-      "Produzir resíduos de maneira mais eficiente",
-      "Transformar materiais descartados em novos produtos"
+      "a) Transformar resíduos em lixo",
+      "b) Reutilizar produtos sem processamento",
+      "c) Produzir resíduos de maneira mais eficiente",
+      "d) Transformar materiais descartados em novos produtos"
     ],
     resposta: 4
   },
-  { pergunta: "Qual é o impacto ambiental do descarte inadequado de pilhas e baterias?",
+  { pergunta: "72 - Qual é o impacto ambiental do descarte inadequado de pilhas e baterias?",
     alternativas: [
-      "Não causa impacto significativo no meio ambiente",
-      "Ajuda na conservação de habitats naturais",
-      "Promove a energização dos solos, causando sua degradação",
-      "Pode liberar substâncias tóxicas no solo e na água"
+      "a) Não causa impacto significativo no meio ambiente",
+      "b) Ajuda na conservação de habitats naturais",
+      "c) Promove a energização dos solos, causando sua degradação",
+      "d) Pode liberar substâncias tóxicas no solo e na água"
     ],
     resposta: 4
   },
-  { pergunta: "Qual é a fonte de energia mais limpa e sustentável?",
+  { pergunta: "73 - Qual é a fonte de energia mais limpa e sustentável?",
     alternativas: [
-      "Petróleo",
-      "Gás natural",
-      "Carvão",
-      "Energia solar"
+      "a) Petróleo",
+      "b) Gás natural",
+      "c) Carvão",
+      "d) Energia solar"
     ],
     resposta: 4
   },
-  { pergunta: "Qual é a principal desvantagem da energia solar?",
+  { pergunta: "74 - Qual é a principal desvantagem da energia solar?",
     alternativas: [
-      "É uma fonte de energia esgotável",
-      "Produção de poluição do ar",
-      "Baixo custo de instalação",
-      "Dependência de condições climáticas"
+      "a) É uma fonte de energia esgotável",
+      "b) Produção de poluição do ar",
+      "c) Baixo custo de instalação",
+      "d) Dependência de condições climáticas"
     ],
     resposta: 2
   },
-  { pergunta: "Qual é a fonte de energia mais utilizada para a geração de eletricidade no mundo? Vento, Biomassa, Hidrelétrica ou Carvão?",
+  { pergunta: "75 - Qual é a fonte de energia mais utilizada para a geração de eletricidade no mundo? a) Vento b) Biomassa c) Hidrelétrica d) Carvão",
     alternativas: [
-      "Vento",
-      "Biomassa",
-      "Hidrelétrica",
-      "Carvão"
+      "a) Vento",
+      "b) Biomassa",
+      "c) Hidrelétrica",
+      "d) Carvão"
     ],
     resposta: 3
   },
-  { pergunta: "Quais são as principais desvantagens da energia eólica? Os aerogeradores podem afetar o movimento migratório de aves, É preciso criar um grande parque eólico para comportar os aerogeradores, Os equipamentos têm um custo expressivo ou Todas as afirmativas estão corretas?",
+  { pergunta: "76 - Quais são as principais desvantagens da energia eólica? a) Os aerogeradores podem afetar o movimento migratório de aves b) É preciso criar um grande parque eólico para comportar os aerogeradores c) Os equipamentos têm um custo expressivo d) Todas as afirmativas estão corretas",
     alternativas: [
-      "Os aerogeradores podem afetar o movimento migratório de aves",
-      "É preciso criar um grande parque eólico para comportar os aerogeradores",
-      "Os equipamentos têm um custo expressivo",
-      "Todas as afirmativas estão corretas"
+      "a) Os aerogeradores podem afetar o movimento migratório de aves",
+      "b) É preciso criar um grande parque eólico para comportar os aerogeradores",
+      "c) Os equipamentos têm um custo expressivo",
+      "d) Todas as afirmativas estão corretas"
     ],
     resposta: 4
   },
-  { pergunta: "O que é a chuva ácida?",
+  { pergunta: "77 - O que é a chuva ácida?",
     alternativas: [
-      "Uma chuva que cai em dias ensolarados",
-      "Uma chuva benéfica ao plantio, pois aumenta a fertilidade do solo",
-      "Um tipo de chuva que ocorre apenas na primavera",
-      "Uma chuva que contém altas concentrações de substâncias ácidas devido à poluição atmosférica"
+      "a) Uma chuva que cai em dias ensolarados",
+      "b) Uma chuva benéfica ao plantio, pois aumenta a fertilidade do solo",
+      "c) Um tipo de chuva que ocorre apenas na primavera",
+      "d) Uma chuva que contém altas concentrações de substâncias ácidas devido à poluição atmosférica"
     ],
     resposta: 4
   },
-  { pergunta: "Quanto tempo, em média, leva para o plástico se decompor? Plástico se decompõe em cerca de 50 anos, Plástico se decompõe rapidamente, em questão de semanas, Plástico se decompõe em aproximadamente 5 anos ou Plástico pode levar centenas de anos para se decompor, dependendo das condições ambientais?",
+  { pergunta: "78 – Quanto tempo, em média, leva para o plástico se decompor? a) Plástico se decompõe em cerca de 50 anos b) Plástico se decompõe rapidamente, em questão de semanas. c) Plástico se decompõe em aproximadamente 5 anos. d) Plástico pode levar centenas de anos para se decompor, dependendo das condições ambientais.",
     alternativas: [
-      "Plástico se decompõe em cerca de 50 anos",
-      "Plástico se decompõe rapidamente, em questão de semanas",
-      "Plástico se decompõe em aproximadamente 5 anos",
-      "Plástico pode levar centenas de anos para se decompor, dependendo das condições ambientais"
+      "a) Plástico se decompõe em cerca de 50 anos",
+      "b) Plástico se decompõe rapidamente, em questão de semanas",
+      "c) Plástico se decompõe em aproximadamente 5 anos",
+      "d) Plástico pode levar centenas de anos para se decompor, dependendo das condições ambientais"
     ],
     resposta: 4
   },
-  { pergunta: "Quais dos materiais a seguir leva o maior tempo para se decompor no ambiente? Alimentos orgânicos, Papel, Vidro ou Plástico?",
+  { pergunta: "79 – Quais dos materiais a seguir leva o maior tempo para se decompor no ambiente? a) Alimentos orgânicos b) Papel c) Vidro d) Plástico",
     alternativas: [
-      "Alimentos orgânicos",
-      "Papel",
-      "Vidro",
-      "Plástico"
+      "a) Alimentos orgânicos",
+      "b) Papel",
+      "c) Vidro",
+      "d) Plástico"
     ],
     resposta: 4
   },
-  { pergunta: "Quais medidas a seguir servem para combater o efeito estufa? Aumento da criação de bovinos, Utilização de combustíveis fósseis, Aumentar o consumo de artigos industrializados ou Plantação e conservação de árvores?",
+  { pergunta: "80 – Quais medidas a seguir servem para combater o efeito estufa? a) Aumento da criação de bovinos b) Utilização de combustíveis fósseis c) Aumentar o consumo de artigos industrializados d) Plantação e conservação de árvores",
     alternativas: [
-      "Aumento da criação de bovinos",
-      "Utilização de combustíveis fósseis",
-      "Aumentar o consumo de artigos industrializados",
-      "Plantação e conservação de árvores"
+      "a) Aumento da criação de bovinos",
+      "b) Utilização de combustíveis fósseis",
+      "c) Aumentar o consumo de artigos industrializados",
+      "d) Plantação e conservação de árvores"
     ],
     resposta: 4
   },
-
         ];
 
         let perguntasExibidas = [];
@@ -312,16 +365,14 @@
                 return;
             }
 
-            let qa = perguntasERespostas[qaIndex];
-            while (perguntasExibidas.includes(qa)) {
-                qaIndex = (qaIndex + 1) % perguntasERespostas.length;
-                qa = perguntasERespostas[qaIndex];
-            }
+            // Embaralha as perguntas antes de escolher a próxima
+            const perguntasNaoExibidas = perguntasERespostas.filter(pergunta => !perguntasExibidas.includes(pergunta));
+            const perguntasEmbaralhadas = embaralharArray(perguntasNaoExibidas);
+            const qa = perguntasEmbaralhadas[0];
 
             perguntasExibidas.push(qa);
             const alternativasHTML = qa.alternativas.map(opcao => `<br>${opcao}`).join('');
             qaDiv.innerHTML = `${qa.pergunta}${alternativasHTML}`;
-            qaIndex = (qaIndex + 1) % perguntasERespostas.length;
         }
 
         function resetarPerguntas() {
@@ -331,6 +382,14 @@
             qaDiv.textContent = "";
             document.getElementById("generateBtn").style.display = "block";
             document.getElementById("resetBtn").style.display = "none";
+        }
+
+        function embaralharArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
         }
     </script>
 </body>
