@@ -347,7 +347,7 @@
       "d) Plantação e conservação de árvores"
     ],
     resposta: 4
-  },
+  }
         ];
 
         let perguntasExibidas = [];
@@ -358,12 +358,12 @@
             const generateBtn = document.getElementById("generateBtn");
             const resetBtn = document.getElementById("resetBtn");
 
-            // if (perguntasExibidas.length === perguntasERespostas.length) {
-            //     qaDiv.textContent = "Você já viu todas as perguntas e respostas.";
-            //     generateBtn.style.display = "none";
-            //     resetBtn.style.display = "block";
-            //     return;
-            // }
+            if (perguntasExibidas.length === perguntasERespostas.length) {
+                // qaDiv.textContent = "";
+                generateBtn.style.display = "none";
+                resetBtn.style.display = "block";
+                return;
+            }
 
             // Embaralha as perguntas antes de escolher a próxima
             const perguntasNaoExibidas = perguntasERespostas.filter(pergunta => !perguntasExibidas.includes(pergunta));
